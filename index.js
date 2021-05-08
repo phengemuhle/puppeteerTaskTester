@@ -1,10 +1,10 @@
 const puppeteer = require("puppeteer");
 const chalk = require("chalk");
 const args = process.argv.slice(2);
-const url = args[0];
+// const url = args[0];
 const log = console.log;
 
-async function taskTester() {
+async function taskTester(url) {
   const browser = await puppeteer.launch({
     headless: false,
     defaultViewport: null,
