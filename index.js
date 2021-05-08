@@ -1,6 +1,6 @@
 const puppeteer = require("puppeteer");
 const chalk = require("chalk");
-const args = process.argv.slice(2);
+// const args = process.argv.slice(2);
 // const url = args[0];
 const log = console.log;
 
