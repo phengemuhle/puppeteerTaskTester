@@ -19,7 +19,7 @@ async function taskTester() {
 
   async function trippleClickThrough() {
     let type = await page.evaluate(() => localStorage.getItem("testType"));
-    if (type === "num") {
+    if (type === "choice") {
       await page.keyboard.type("1", { delay: 200 });
       await page.keyboard.type("1", { delay: 200 });
       await page.keyboard.type("1", { delay: 200 });
@@ -43,12 +43,14 @@ async function taskTester() {
     log(chalk.yellowBright(newTask[newTask.length - 1] + " is starteing now."));
 
     page.on("console", async (e) => {
+
       const type = await page.evaluate(() => localStorage.getItem("type"));
       if (type == 4) {
         if (e.text() === "choice") {
           const stim = await page.evaluate(() => localStorage.getItem("stim"));
           await page.keyboard.type(stim, { delay: 200 });
-          log(chalk.greenBright(`Sound present on ${stim}`));
+          log(chalk.greenBright(`Sound was present on the ${stim}${stim == 1 ? "st" : "nd"} choice`));
+          log(chalk.blueBright(`Fast pressed ${stim}`))
         }
       } else if (type == 3) {
         await delay(100);
